@@ -2,12 +2,13 @@ import { useEffect, useState } from "react"
 
 import ParticleText from "@/components/particle-text/ParticleText"
 import { ScrubAvatar } from "@/components/scrub-avatar"
+import { useResolvedTheme } from "@/hooks/use-resolved-theme"
 import { useTypewriter } from "@/hooks/use-typewriter"
 
 const TYPEWRITER_TEXT =
   "Hello! I'm Lim Houykea. I build practical web applications and data-driven solutions."
 
-const EMAIL = "hello@mainframe.co"
+const EMAIL = "limhouykea@gmail.com"
 
 const PILL_LABELS = [
   "Work Experience",
@@ -36,9 +37,14 @@ function CopyIcon() {
 
 export function Hero() {
   const { displayed, done } = useTypewriter(TYPEWRITER_TEXT)
+  const resolvedTheme = useResolvedTheme()
+  // ParticleText renders to a canvas and cannot read CSS variables, so switch
+  // its base color per theme: dark ink on light paper, white on dark.
+  const particleColor = resolvedTheme === "light" ? "#2a2b22" : "#ffffff"
 
   // Pills fade in 400ms after load, independent of the typewriter.
   const [pillsVisible, setPillsVisible] = useState(false)
+  const [copied, setCopied] = useState(false)
   useEffect(() => {
     const id = setTimeout(() => setPillsVisible(true), 400)
     return () => clearTimeout(id)
@@ -46,6 +52,8 @@ export function Hero() {
 
   const copyEmail = () => {
     void navigator.clipboard?.writeText(EMAIL)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1600)
   }
 
   const pillBase =
@@ -70,7 +78,7 @@ export function Hero() {
             text="Lim Houykea"
             particleSize={1.44}
             density={4}
-            color="#ffffff"
+            color={particleColor}
             highlightColor="#A855F7"
             scatter={140}
             gatherDuration={800}
@@ -89,7 +97,7 @@ export function Hero() {
 
         {/* 2. Typewriter text */}
         <p
-          className="mb-5 text-white sm:mb-6"
+          className="mb-5 text-[var(--cine-cream)] sm:mb-6"
           style={{
             fontSize: "clamp(18px, 4vw, 26px)",
             lineHeight: 1.35,
@@ -120,13 +128,19 @@ export function Hero() {
           <button
             type="button"
             onClick={copyEmail}
-            className={`${pillBase} gap-2 border border-white bg-transparent text-white hover:bg-white hover:text-black sm:gap-3`}
+            aria-label={copied ? "Email copied to clipboard" : `Copy email ${EMAIL}`}
+            title="Click to copy"
+            className={`${pillBase} gap-2 border bg-transparent sm:gap-3 border-black/40 text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black`}
           >
             <span>
-              Reach us:{" "}
+              Contact:{" "}
               <span className="underline underline-offset-1">{EMAIL}</span>
             </span>
-            <CopyIcon />
+            {copied ? (
+              <span aria-hidden>Copied!</span>
+            ) : (
+              <CopyIcon />
+            )}
           </button>
         </div>
       </div>

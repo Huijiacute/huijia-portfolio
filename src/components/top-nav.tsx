@@ -1,6 +1,7 @@
 import GooeyNav from "@/components/gooey-nav/GooeyNav"
 import SplitFlapText from "@/components/SplitFlapText"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { useResolvedTheme } from "@/hooks/use-resolved-theme"
 
 /** Nav items mapped to on-page section anchors. */
 const NAV_ITEMS = [
@@ -11,6 +12,12 @@ const NAV_ITEMS = [
 ]
 
 export function TopNav() {
+  const resolvedTheme = useResolvedTheme()
+  const isDark = resolvedTheme === "dark"
+  // Dark board on dark mode; light board with purple ink on light mode.
+  const tileColor = isDark ? "#111827" : "#ede9fe"
+  const textColor = isDark ? "#dbc2f3" : "#6d28d9"
+
   return (
     <header
       className="mf-body fixed inset-x-0 top-0 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5"
@@ -25,8 +32,8 @@ export function TopNav() {
           cycleDelay={2400}
           charset="alphanumeric"
           flipsPerChar={8}
-          tileColor="#111827"
-          textColor="#dbc2f3"
+          tileColor={tileColor}
+          textColor={textColor}
           tileRadius={8}
           gap={6}
           fontSize={40}
@@ -40,7 +47,8 @@ export function TopNav() {
         <GooeyNav
           items={NAV_ITEMS}
           initialActiveIndex={0}
-          theme="light"
+          theme={resolvedTheme}
+          color="#7C3AED"
           size="md"
           frame
           particleCount={15}

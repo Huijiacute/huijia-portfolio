@@ -195,7 +195,7 @@ export function InteractiveAvatar({
 
       {/* Emotion badge */}
       {showBadge && (
-        <div className="cine-ui pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-[var(--cine-line)] bg-black/30 px-4 py-1 text-xs tracking-wide text-[var(--cine-cream)] uppercase backdrop-blur">
+        <div className="cine-ui pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-[var(--cine-line)] bg-white/40 px-4 py-1 text-xs tracking-wide text-[var(--cine-cream)] uppercase backdrop-blur dark:bg-black/30">
           feeling&nbsp;
           <span className="text-[var(--cine-accent)]">{emotion.label}</span>
           &nbsp;· tap me

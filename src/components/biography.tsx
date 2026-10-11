@@ -39,7 +39,7 @@ export function Biography() {
 
         {/* Right: giant year watermark + avatar */}
         <div className="relative flex items-center justify-center">
-          <span className="cine-display pointer-events-none absolute -z-0 text-[clamp(8rem,22vw,20rem)] text-white/5 select-none">
+          <span className="cine-display pointer-events-none absolute -z-0 text-[clamp(8rem,22vw,20rem)] text-black/5 select-none dark:text-white/5">
             2023
           </span>
           <InteractiveAvatar

@@ -61,12 +61,15 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={[
         "inline-flex h-10 w-10 items-center justify-center rounded-full",
-        "border border-white/15 bg-white/10 text-white backdrop-blur",
-        "transition-colors duration-200 hover:bg-white/20",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/40",
-        // Light-mode styling via Tailwind's class-based dark strategy:
-        // these are the LIGHT defaults; `.dark` variants restore the dark look.
-        "dark:border-white/15 dark:bg-white/10 dark:text-white",
+        "backdrop-blur transition-colors duration-200",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+        // LIGHT defaults: dark ink on a translucent dark surface so the icon
+        // is visible against the light paper background.
+        "border border-black/15 bg-black/5 text-black hover:bg-black/10",
+        "focus-visible:ring-black focus-visible:ring-offset-white/40",
+        // DARK overrides: white icon on a translucent light surface.
+        "dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/20",
+        "dark:focus-visible:ring-white dark:focus-visible:ring-offset-black/40",
         className,
       ].join(" ")}
     >

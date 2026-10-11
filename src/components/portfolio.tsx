@@ -86,7 +86,7 @@ export function Portfolio() {
 
           {/* Active category card */}
           <div className="relative">
-            <div className="rounded-2xl border border-[var(--cine-line)] bg-black/25 p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-[var(--cine-line)] bg-white/40 p-8 backdrop-blur-sm dark:bg-black/25">
               <span className="cine-ui inline-block rounded-md bg-[var(--cine-accent)] px-2.5 py-1 text-xs font-medium text-black">
                 {CATEGORIES[active].title}
               </span>
