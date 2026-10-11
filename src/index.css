@@ -185,6 +185,10 @@
    ===================================================================== */
 
 :root {
+  /* Mainframe hero fonts */
+  --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+
   /* Force the dark cinematic look regardless of light/dark class */
   --cine-bg: #2b2d23;          /* deep olive */
   --cine-bg-2: #1c1d17;        /* darker vignette edge */
@@ -290,4 +294,43 @@ body {
   .animate-icon-drift,
   .animate-lid-peek,
   .animate-scroll-bob { animation: none; }
+}
+
+/* =====================================================================
+   Mainframe hero theme — fonts, typewriter cursor, pill animations
+   ===================================================================== */
+
+/* Font helpers */
+.mf-heading { font-family: var(--font-heading); }
+.mf-body { font-family: var(--font-body); }
+
+/* Blinking typewriter cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.mf-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: #fff;
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+/* Pill buttons fade-in + slide-up (triggered via .is-visible) */
+.mf-pills {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.mf-pills.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mf-cursor { animation: none; }
+  .mf-pills { transition: none; }
 }

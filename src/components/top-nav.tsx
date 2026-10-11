@@ -1,45 +1,115 @@
-const LINKS = [
-  { id: "hero", label: "Intro", num: "01" },
-  { id: "biography", label: "Biography", num: "02" },
-  { id: "portfolio", label: "Portfolio", num: "03" },
-  { id: "works", label: "Selected Works", num: "04" },
-  { id: "possibilities", label: "Possibilities", num: "05" },
-]
+import { useState } from "react"
+
+const NAV_LINKS = ["Labs", "Studio", "Openings", "Shop"]
 
 export function TopNav() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <header className="fixed inset-x-0 top-0 z-40">
-      <nav className="cine-ui mx-auto flex max-w-[1500px] items-center justify-between px-6 py-5 text-[var(--cine-cream)]">
-        {/* Logo */}
-        <a href="#hero" className="text-xl font-semibold tracking-tight">
-          HuiJia<span className="text-[var(--cine-accent)]">.</span>
+    <>
+      {/* Fixed navbar */}
+      <header
+        className="mf-body fixed inset-x-0 top-0 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5"
+        style={{ zIndex: 10 }}
+      >
+        {/* Logo (left) */}
+        <a href="#hero" className="flex items-center gap-3">
+          <span
+            className="mf-heading text-[21px] tracking-tight text-white sm:text-[26px]"
+          >
+            Mainframe(R)
+          </span>
+          <span
+            className="select-none text-[25px] text-white sm:text-[30px]"
+            style={{ letterSpacing: "-0.02em" }}
+            aria-hidden
+          >
+            ✳︎
+          </span>
         </a>
 
-        {/* Center links */}
-        <ul className="hidden items-center gap-8 text-xs tracking-widest uppercase md:flex">
-          {LINKS.map((l) => (
-            <li key={l.id}>
+        {/* Desktop nav links (center) */}
+        <nav className="hidden items-center text-[23px] text-white md:flex">
+          {NAV_LINKS.map((label, i) => (
+            <span key={label}>
               <a
-                href={`#${l.id}`}
-                className="text-[var(--cine-muted)] transition-colors hover:text-[var(--cine-cream)]"
+                href="#"
+                className="transition-opacity hover:opacity-60"
               >
-                {l.label}
+                {label}
               </a>
-            </li>
+              {i < NAV_LINKS.length - 1 && <span>, </span>}
+            </span>
           ))}
-        </ul>
+        </nav>
 
-        {/* Right tagline */}
-        <div className="hidden text-right leading-tight sm:block">
-          <p className="text-[11px] tracking-[0.3em] uppercase">
-            Independent Designer
-          </p>
-          <p className="text-[10px] tracking-wide text-[var(--cine-muted)]">
-            A curious mind. A world of ideas.
-          </p>
-        </div>
-      </nav>
-    </header>
+        {/* Desktop CTA (right) */}
+        <a
+          href="#"
+          className="hidden text-[23px] text-white underline underline-offset-2 transition-opacity hover:opacity-60 md:block"
+        >
+          Get in touch
+        </a>
+
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          className="flex flex-col gap-[5px] md:hidden"
+        >
+          <span
+            className="h-[2px] w-6 bg-white transition-transform duration-300"
+            style={
+              open
+                ? { transform: "translateY(7px) rotate(45deg)" }
+                : undefined
+            }
+          />
+          <span
+            className="h-[2px] w-6 bg-white transition-opacity duration-300"
+            style={open ? { opacity: 0 } : undefined}
+          />
+          <span
+            className="h-[2px] w-6 bg-white transition-transform duration-300"
+            style={
+              open
+                ? { transform: "translateY(-7px) rotate(-45deg)" }
+                : undefined
+            }
+          />
+        </button>
+      </header>
+
+      {/* Mobile overlay */}
+      <div
+        className="mf-body fixed inset-0 flex flex-col justify-center gap-8 bg-black/90 px-8 backdrop-blur-md transition-opacity duration-300 md:hidden"
+        style={{
+          zIndex: 9,
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? "auto" : "none",
+        }}
+      >
+        {NAV_LINKS.map((label) => (
+          <a
+            key={label}
+            href="#"
+            onClick={() => setOpen(false)}
+            className="text-[32px] font-medium text-white transition-opacity hover:opacity-60"
+          >
+            {label}
+          </a>
+        ))}
+        <a
+          href="#"
+          onClick={() => setOpen(false)}
+          className="text-[32px] font-medium text-white underline underline-offset-2 transition-opacity hover:opacity-60"
+        >
+          Get in touch
+        </a>
+      </div>
+    </>
   )
 }
 
