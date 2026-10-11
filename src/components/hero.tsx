@@ -1,149 +1,91 @@
-import { useEffect, useState } from "react"
+import { ArrowDown, Download } from "lucide-react"
 
-import ParticleText from "@/components/particle-text/ParticleText"
-import { ScrubAvatar } from "@/components/scrub-avatar"
+import TechText from "@/components/tech-text/TechText"
 import { useResolvedTheme } from "@/hooks/use-resolved-theme"
-import { useTypewriter } from "@/hooks/use-typewriter"
 
-const TYPEWRITER_TEXT =
-  "Hello! I'm Lim Houykea. I build practical web applications and data-driven solutions."
-
-const EMAIL = "limhouykea@gmail.com"
-
-const PILL_LABELS = [
-  "Work Experience",
-  "View Resume",
-  "Selected Projects",
-  "View GitHub",
-]
-
-/** Small inline copy icon — two overlapping rectangles. */
-function CopyIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1"
-      aria-hidden
-    >
-      <rect x="3.5" y="3.5" width="6" height="6" rx="1" />
-      <rect x="1.5" y="1.5" width="6" height="6" rx="1" />
-    </svg>
-  )
-}
-
+/**
+ * Hero — the primary content of the right column. A TechText wordmark, a large
+ * display heading, and two actions (My Works / Download CV), matching the
+ * reference layout.
+ */
 export function Hero() {
-  const { displayed, done } = useTypewriter(TYPEWRITER_TEXT)
   const resolvedTheme = useResolvedTheme()
-  // ParticleText renders to a canvas and cannot read CSS variables, so switch
-  // its base color per theme: dark ink on light paper, white on dark.
-  const particleColor = resolvedTheme === "light" ? "#2a2b22" : "#ffffff"
-
-  // Pills fade in 400ms after load, independent of the typewriter.
-  const [pillsVisible, setPillsVisible] = useState(false)
-  const [copied, setCopied] = useState(false)
-  useEffect(() => {
-    const id = setTimeout(() => setPillsVisible(true), 400)
-    return () => clearTimeout(id)
-  }, [])
-
-  const copyEmail = () => {
-    void navigator.clipboard?.writeText(EMAIL)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1600)
-  }
-
-  const pillBase =
-    "inline-flex items-center justify-center rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] whitespace-nowrap transition-colors duration-200"
+  // Deep purple ink in light mode, soft lavender in dark mode.
+  const techColor = resolvedTheme === "dark" ? "#b79cff" : "#4b2fb0"
 
   return (
     <section
       id="hero"
-      className="mf-body relative flex h-screen flex-col justify-start overflow-hidden px-5 pt-24 pb-12 sm:px-8 md:px-10"
+      className="mf-body relative flex min-h-[70vh] flex-col justify-center py-10"
     >
-      {/* The girl avatar as the full-screen background — pans with the mouse */}
-      <ScrubAvatar />
-
-      {/* Hero content */}
-      <div className="relative max-w-xl text-left" style={{ zIndex: 10 }}>
-        {/* 1. Animated particle name */}
-        <div
-          className="pointer-events-auto"
-          style={{ height: 180, width: "min(72vw, 720px)", marginTop: 90, marginLeft: -16 }}
-        >
-          <ParticleText
-            text="Lim Houykea"
-            particleSize={1.44}
-            density={4}
-            color={particleColor}
-            highlightColor="#A855F7"
-            scatter={140}
-            gatherDuration={800}
-            stagger={390}
-            pointerRepel={42}
-            repelRadius={90}
-            idleDrift={0.8}
-            trigger="mount"
-            fontSize="clamp(3.2rem, 10.4vw, 7.2rem)"
-            fontWeight={800}
-            fontFamily="inherit"
-            align="left"
-            glow
-          />
-        </div>
-
-        {/* 2. Typewriter text */}
-        <p
-          className="mb-5 text-[var(--cine-cream)] sm:mb-6"
-          style={{
-            fontSize: "clamp(18px, 4vw, 26px)",
-            lineHeight: 1.35,
-            fontWeight: 400,
-            minHeight: "54px",
-          }}
-        >
-          {displayed}
-          {!done && <span className="mf-cursor" aria-hidden />}
-        </p>
-
-        {/* 3. Action pill buttons */}
-        <div
-          className={`mf-pills flex flex-wrap gap-y-1 ${
-            pillsVisible ? "is-visible" : ""
-          }`}
-        >
-          {PILL_LABELS.map((label) => (
-            <button
-              key={label}
-              type="button"
-              className={`${pillBase} border border-black/10 bg-white text-black hover:bg-black hover:text-white`}
-            >
-              {label}
-            </button>
-          ))}
-
-          <button
-            type="button"
-            onClick={copyEmail}
-            aria-label={copied ? "Email copied to clipboard" : `Copy email ${EMAIL}`}
-            title="Click to copy"
-            className={`${pillBase} gap-2 border bg-transparent sm:gap-3 border-black/40 text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black`}
-          >
-            <span>
-              Contact:{" "}
-              <span className="underline underline-offset-1">{EMAIL}</span>
-            </span>
-            {copied ? (
-              <span aria-hidden>Copied!</span>
-            ) : (
-              <CopyIcon />
-            )}
-          </button>
-        </div>
+      {/* Interactive TechText wordmark (left-anchored; container sized near the
+          text width so the component's internal centering reads as left-aligned) */}
+      <div style={{ position: "relative", width: "min(100%, 720px)", height: 180, marginLeft: "-56px" }}>
+        <TechText
+          text="Lim Houykea"
+          fontWeight={600}
+          fontSize={120}
+          reveal="letter"
+          dashLength={4}
+          dashGap={2}
+          specks={15}
+          color={techColor}
+          accentColor={techColor}
+        />
       </div>
+
+      {/* Big display heading */}
+      <h2
+        className="font-semibold tracking-tight text-[#201547] dark:text-[#e5d4fa]"
+        style={{
+          fontSize: "clamp(2.6rem, 6vw, 5rem)",
+          lineHeight: 1.04,
+          letterSpacing: "-0.02em",
+        }}
+      >
+        Let&apos;s understand more
+        <br />
+        about me.
+      </h2>
+
+      {/* Actions */}
+      <div className="mt-10 flex flex-wrap items-center gap-5">
+        <a
+          href="#portfolio"
+          className={[
+            "inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-medium",
+            "bg-white text-black shadow-[0_16px_40px_-20px_rgba(80,60,160,0.6)] transition-transform",
+            "hover:-translate-y-0.5",
+            "dark:bg-white/10 dark:text-white",
+          ].join(" ")}
+        >
+          My Works
+          <span className="grid grid-cols-2 gap-0.5" aria-hidden>
+            <span className="h-1.5 w-1.5 rounded-[1px] bg-current" />
+            <span className="h-1.5 w-1.5 rounded-[1px] bg-current" />
+            <span className="h-1.5 w-1.5 rounded-[1px] bg-current" />
+            <span className="h-1.5 w-1.5 rounded-[1px] bg-current" />
+          </span>
+        </a>
+
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 font-medium text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
+        >
+          Download CV
+          <Download className="h-4 w-4" aria-hidden />
+        </a>
+      </div>
+
+      {/* Scroll hint */}
+      <a
+        href="#biography"
+        aria-label="Scroll for more"
+        className="mt-12 inline-flex w-fit items-center gap-2 text-xs tracking-[0.25em] text-black/40 uppercase dark:text-white/40"
+      >
+        Scroll for more
+        <ArrowDown className="animate-scroll-bob h-4 w-4" aria-hidden />
+      </a>
     </section>
   )
 }

@@ -15,7 +15,7 @@ export function Possibilities() {
       className="cine-section relative overflow-hidden"
     >
       <div className="cine-eyebrow absolute top-24 left-10">
-        05 — The Possibility
+        05 — Contact
       </div>
 
       <div className="mx-auto w-full max-w-[1400px]">

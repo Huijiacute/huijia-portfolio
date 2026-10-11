@@ -29,7 +29,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="cine-section relative overflow-hidden">
       <div className="cine-eyebrow absolute top-24 left-10">
-        03 — The Portfolio / Work folder
+        03 — Work Projects
       </div>
       <div className="cine-eyebrow absolute top-24 right-10 text-right">
         3D Design · UI Design

@@ -11,7 +11,7 @@ export function Biography() {
   return (
     <section id="biography" className="cine-section relative overflow-hidden">
       <div className="cine-eyebrow absolute top-24 left-10">
-        02 — Biography / About me
+        02 — About Me
       </div>
 
       <div className="mx-auto grid w-full max-w-[1400px] items-center gap-10 md:grid-cols-2">

@@ -52,6 +52,29 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Surface any uncaught error / unhandled rejection directly on the page
+      // so a blank screen always shows the underlying cause.
+      (function () {
+        function show(msg) {
+          var el = document.getElementById("__err");
+          if (!el) {
+            el = document.createElement("pre");
+            el.id = "__err";
+            el.style.cssText =
+              "position:fixed;inset:0;z-index:99999;margin:0;padding:16px;background:#fff;color:#b00;font:13px/1.4 monospace;white-space:pre-wrap;overflow:auto";
+            document.body.appendChild(el);
+          }
+          el.textContent += msg + "\n\n";
+        }
+        window.addEventListener("error", function (e) {
+          show("ERROR: " + (e.message || e.error) + "\n" + (e.error && e.error.stack ? e.error.stack : ""));
+        });
+        window.addEventListener("unhandledrejection", function (e) {
+          show("UNHANDLED REJECTION: " + (e.reason && e.reason.stack ? e.reason.stack : e.reason));
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
