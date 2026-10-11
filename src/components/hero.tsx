@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react"
 
+import ParticleText from "@/components/particle-text/ParticleText"
 import { ScrubAvatar } from "@/components/scrub-avatar"
 import { useTypewriter } from "@/hooks/use-typewriter"
 
 const TYPEWRITER_TEXT =
-  "Glad you stopped in. Good taste tends to find us. Now, what are we building?"
+  "Hello! I'm Lim Houykea. I build practical web applications and data-driven solutions."
 
 const EMAIL = "hello@mainframe.co"
 
 const PILL_LABELS = [
-  "Pitch us an idea",
-  "Come work here",
-  "Send a brief hello",
-  "See how we operate",
+  "Work Experience",
+  "View Resume",
+  "Selected Projects",
+  "View GitHub",
 ]
 
 /** Small inline copy icon — two overlapping rectangles. */
@@ -53,27 +54,37 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="mf-body relative flex h-screen flex-col justify-end overflow-hidden px-5 pb-12 sm:px-8 md:justify-center md:px-10 md:pb-0"
+      className="mf-body relative flex h-screen flex-col justify-start overflow-hidden px-5 pt-24 pb-12 sm:px-8 md:px-10"
     >
       {/* The girl avatar as the full-screen background — pans with the mouse */}
       <ScrubAvatar />
 
       {/* Hero content */}
-      <div className="relative max-w-xl" style={{ zIndex: 10 }}>
-        {/* 1. Blurred intro label */}
+      <div className="relative max-w-xl text-left" style={{ zIndex: 10 }}>
+        {/* 1. Animated particle name */}
         <div
-          className="pointer-events-none mb-5 select-none sm:mb-6"
-          style={{
-            fontSize: "clamp(18px, 4vw, 26px)",
-            lineHeight: 1.3,
-            fontWeight: 400,
-            color: "#fff",
-            filter: "blur(4px)",
-          }}
+          className="pointer-events-auto"
+          style={{ height: 180, width: "min(72vw, 720px)", marginTop: 90, marginLeft: -16 }}
         >
-          Hey there, meet A.R.I.A,
-          <br />
-          Mainframe&apos;s Adaptive Response Interface Agent
+          <ParticleText
+            text="Lim Houykea"
+            particleSize={1.44}
+            density={4}
+            color="#ffffff"
+            highlightColor="#A855F7"
+            scatter={140}
+            gatherDuration={800}
+            stagger={390}
+            pointerRepel={42}
+            repelRadius={90}
+            idleDrift={0.8}
+            trigger="mount"
+            fontSize="clamp(3.2rem, 10.4vw, 7.2rem)"
+            fontWeight={800}
+            fontFamily="inherit"
+            align="left"
+            glow
+          />
         </div>
 
         {/* 2. Typewriter text */}

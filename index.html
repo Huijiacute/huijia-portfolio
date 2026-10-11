@@ -2,6 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      No-flash theme bootstrap. Runs synchronously before any paint so the
+      correct .light / .dark class is on <html> before React mounts, matching
+      the project's ThemeProvider (storageKey "theme", default "system").
+      This prevents a flash of the wrong theme on first load / refresh.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored === "light" || stored === "dark" || stored === "system"
+              ? stored
+              : "system";
+          var resolved =
+            theme === "system"
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light"
+              : theme;
+          var root = document.documentElement;
+          root.classList.remove("light", "dark");
+          root.classList.add(resolved);
+          root.style.colorScheme = resolved;
+        } catch (e) {
+          /* localStorage/matchMedia unavailable — fall back to CSS defaults */
+        }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/jia_cute_cartoon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

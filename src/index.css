@@ -189,7 +189,8 @@
   --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
 
-  /* Force the dark cinematic look regardless of light/dark class */
+  /* Cinematic palette — dark is the default look. A `.light` override below
+     makes the whole design respond to the theme toggle. */
   --cine-bg: #2b2d23;          /* deep olive */
   --cine-bg-2: #1c1d17;        /* darker vignette edge */
   --cine-panel: #33352a;
@@ -200,6 +201,18 @@
 
   --font-display: "Anton", "Oswald", system-ui, sans-serif;
   --font-ui: "Oswald", system-ui, sans-serif;
+}
+
+/* Light-mode cinematic palette: warm paper/cream surfaces with dark ink text.
+   Activated by the `.light` class the ThemeProvider puts on <html>. */
+.light {
+  --cine-bg: #efe9db;          /* warm paper */
+  --cine-bg-2: #ddd4c0;        /* soft vignette edge */
+  --cine-panel: #f6f1e6;
+  --cine-cream: #2a2b22;       /* dark ink headline */
+  --cine-muted: #6b6a5c;       /* muted ink */
+  --cine-accent: #a9772f;      /* deeper tan accent for contrast */
+  --cine-line: rgba(42, 43, 34, 0.16);
 }
 
 html {
