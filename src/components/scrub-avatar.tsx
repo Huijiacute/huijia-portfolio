@@ -3,14 +3,15 @@ import { useEffect, useRef } from "react"
 const AVATAR_SRC = "/jiaa.png"
 
 const SENSITIVITY = 0.8
-// How far (in viewport-width fraction) the image can pan either side of center.
+// How far (in viewport-width fraction) she can pan either side of center.
 const MAX_PAN = 0.12
 
 /**
- * Full-screen fixed background that shows the girl avatar and "scrubs" her
- * horizontally based on mouse movement — the same gesture that drove the
- * old background video, but applied as a parallax pan since a PNG has no
- * frames to seek through.
+ * The girl avatar as the hero background. She fills the hero frame
+ * (absolute inset-0, object-cover) and "scrubs" horizontally based on
+ * mouse movement — the same delta-accumulation gesture that drove the
+ * original background video — eased for smooth motion. Scoped to the hero
+ * section, not fixed across the whole page.
  */
 export function ScrubAvatar() {
   const imgRef = useRef<HTMLImageElement>(null)
@@ -29,8 +30,8 @@ export function ScrubAvatar() {
       // Ease current position toward the target for smooth motion.
       pos.current += (target.current - pos.current) * 0.12
       const translatePx = -pos.current * window.innerWidth
-      const scale = 1.18 // slight overscan so panning never shows edges
-      img.style.transform = `translateX(${translatePx}px) scale(${scale})`
+      // Slightly minimized so the full avatar (including the hat) is visible.
+      img.style.transform = `translateX(${translatePx}px) scale(0.92)`
 
       if (Math.abs(target.current - pos.current) > 0.0005) {
         raf.current = requestAnimationFrame(apply)
@@ -72,12 +73,12 @@ export function ScrubAvatar() {
       src={AVATAR_SRC}
       alt="Hui Jia avatar"
       draggable={false}
-      className="pointer-events-none fixed inset-0 h-full w-full select-none object-cover"
+      className="pointer-events-none absolute inset-0 h-full w-full select-none object-contain object-bottom"
       style={{
         zIndex: 0,
-        objectPosition: "70% center",
+        objectPosition: "70% bottom",
         willChange: "transform",
-        transform: "scale(1.18)",
+        transform: "scale(0.92)",
       }}
     />
   )
