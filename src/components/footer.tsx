@@ -42,7 +42,7 @@ export function Footer() {
           style={{
             fontSize: "clamp(5rem, 22vw, 24rem)",
             background:
-              "linear-gradient(180deg, rgba(159,103,255,0.28) 0%, rgba(124,58,237,0.8) 55%, rgba(216,179,130,1) 100%)",
+              "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.5) 10%, rgba(159,103,255,0.4) 28%, rgba(124,58,237,0.8) 60%, rgba(216,179,130,1) 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             WebkitTextFillColor: "transparent",
