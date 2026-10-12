@@ -47,51 +47,59 @@ function TailwindMark({ className = "" }: { className?: string }) {
 
 export function Biography() {
   return (
-    <section id="biography" className="cine-section relative overflow-hidden">
-      <div className="cine-eyebrow absolute top-24 left-10">02 — About Me</div>
+    <section id="biography" className="cine-section relative">
+      <div className="mx-auto w-[105%] max-w-[1470px] -translate-x-[2.5%]">
+        {/* Content grid (card wrapper removed) */}
+        <div className="grid items-center gap-10 md:grid-cols-2">
+          {/* Left: eyebrow + WHO AM I + bio + CTA + tech skills */}
+          <div>
+            <div className="cine-ui text-xs tracking-[0.3em] text-white/70 uppercase">
+              02 — About Me
+            </div>
 
-      <div className="mx-auto grid w-full max-w-[1400px] items-center gap-12 md:grid-cols-2">
-        {/* Left: WHO AM I headline + biography + CTA + tech skills */}
-        <div className="relative z-10">
-          <h2 className="cine-display text-[clamp(3rem,7vw,6rem)]">Who Am I</h2>
+            <h2 className="cine-display mt-6 text-[clamp(2.75rem,6vw,5.5rem)] text-white">
+              Who Am I
+            </h2>
 
-          <p className="cine-ui mt-6 max-w-[52ch] text-base leading-relaxed text-[var(--cine-cream)]">
-            I am Lim Houykea, a fourth-year ICT student at the American
-            University of Phnom Penh (AUPP). I am a full-stack developer and
-            technology builder who enjoys creating practical web applications,
-            data-driven solutions, and AI-powered tools. My technical interests
-            include web development, data science, artificial intelligence,
-            natural language processing, IoT, and entrepreneurship.
-          </p>
-
-          <a
-            href="#possibilities"
-            className="cine-ui mt-7 inline-flex items-center rounded-full border border-[var(--cine-line)] px-5 py-2 text-sm text-[var(--cine-cream)] transition-colors hover:border-[var(--cine-accent)] hover:text-[var(--cine-accent)]"
-          >
-            View Detailed
-          </a>
-
-          <div className="mt-9">
-            <p className="cine-ui text-sm font-semibold tracking-wide text-[var(--cine-cream)]">
-              Tech Skills:
+            <p className="cine-ui mt-6 max-w-[52ch] text-base leading-relaxed text-white/90">
+              I am Lim Houykea, a fourth-year ICT student at the American
+              University of Phnom Penh (AUPP). I am a full-stack developer and
+              technology builder who enjoys creating practical web
+              applications, data-driven solutions, and AI-powered tools. My
+              technical interests include web development, data science,
+              artificial intelligence, natural language processing, IoT, and
+              entrepreneurship.
             </p>
-            <div className="mt-4 flex items-center gap-7 text-[var(--cine-cream)]">
-              <ReactMark className="h-9 w-9" />
-              <NextMark className="h-7 w-auto" />
-              <TailwindMark className="h-7 w-auto" />
+
+            <a
+              href="#possibilities"
+              className="cine-ui mt-7 inline-flex items-center rounded-full border border-white/40 bg-white/10 px-5 py-2 text-sm text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+            >
+              View Detailed
+            </a>
+
+            <div className="mt-9">
+              <p className="cine-ui text-sm font-semibold tracking-wide text-white">
+                Tech Skills:
+              </p>
+              <div className="mt-4 flex items-center gap-7 text-white">
+                <ReactMark className="h-9 w-9" />
+                <NextMark className="h-7 w-auto" />
+                <TailwindMark className="h-7 w-auto" />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Right: real photo (no watermark behind it) */}
-        <div className="relative flex items-center justify-center">
-          <div className="relative overflow-hidden rounded-[20px] border border-[var(--cine-line)] shadow-[0_30px_90px_-30px_rgba(0,0,0,0.6)]">
-            <img
-              src={PHOTO_SRC}
-              alt="Lim Houykea"
-              draggable={false}
-              className="aspect-[4/5] w-full max-w-[460px] select-none object-cover object-center"
-            />
+          {/* Right: real photo */}
+          <div className="relative flex items-center justify-center">
+            <div className="relative overflow-hidden rounded-[20px] shadow-[0_30px_90px_-30px_rgba(0,0,0,0.6)]">
+              <img
+                src={PHOTO_SRC}
+                alt="Lim Houykea"
+                draggable={false}
+                className="aspect-[4/5] w-full max-w-[460px] select-none object-cover object-center"
+              />
+            </div>
           </div>
         </div>
       </div>

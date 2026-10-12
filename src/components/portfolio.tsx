@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { cn } from "@/lib/utils"
+import Folder from "@/components/folder/Folder"
 
 const CATEGORIES = [
   {
@@ -31,57 +31,28 @@ export function Portfolio() {
       <div className="cine-eyebrow absolute top-24 left-10">
         03 — Work Projects
       </div>
-      <div className="cine-eyebrow absolute top-24 right-10 text-right">
-        3D Design · UI Design
-        <br />
-        Illustration &amp; IP
-      </div>
 
       <div className="mx-auto w-full max-w-[1400px]">
         <h2 className="cine-display text-[clamp(3rem,8vw,7rem)]">
-          My Portfolio.
+          My Work Projects
         </h2>
         <p className="cine-ui mt-4 max-w-md text-sm text-[var(--cine-muted)]">
-          Three disciplines — 3D, interface and illustration — tucked into one
-          work folder.
+          Browse my work below. Like what you see? Let's build something together!
         </p>
 
         <div className="mt-12 grid items-center gap-10 md:grid-cols-2">
-          {/* Folder graphic */}
-          <div className="relative mx-auto w-full max-w-md">
-            {/* Tabs peeking out of the folder */}
-            <div className="animate-lid-peek absolute -top-6 left-6 z-0 flex gap-2">
-              {CATEGORIES.map((c, i) => (
-                <button
-                  key={c.tab}
-                  onClick={() => setActive(i)}
-                  className={cn(
-                    "cine-ui rounded-t-md px-3 py-1.5 text-xs font-medium tracking-wide transition-all",
-                    active === i
-                      ? "-translate-y-1 bg-[var(--cine-accent)] text-black"
-                      : "bg-[#c99a5b] text-black/70 hover:-translate-y-0.5",
-                  )}
-                >
-                  {c.tab}
-                </button>
-              ))}
-            </div>
-
-            {/* Folder body */}
-            <div className="relative z-10 rounded-2xl rounded-tl-sm bg-gradient-to-b from-[#e6a94e] to-[#d2902f] p-8 shadow-2xl">
-              <p className="cine-display text-4xl text-[#5a3c12]">
-                Portfolio
-                <span className="text-2xl"> — HJ</span>
-              </p>
-              <div className="mt-6 flex items-center justify-between">
-                <span className="cine-ui text-xs text-[#5a3c12]/70 uppercase">
-                  Click a tab to open
-                </span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#8fae4a] text-lg text-white shadow">
-                  →
-                </span>
-              </div>
-            </div>
+          {/* Interactive folder (React Bits) */}
+          <div className="flex min-h-[320px] items-center justify-center">
+            <Folder
+              color="#6366F1"
+              label="Portfolio"
+              size={1.4}
+              items={CATEGORIES.map((c) => ({
+                title: c.title,
+                description: c.desc,
+              }))}
+              onItemClick={(_item, index) => setActive(index)}
+            />
           </div>
 
           {/* Active category card */}
