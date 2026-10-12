@@ -1,3 +1,5 @@
+import { forwardRef } from "react"
+
 import { InteractiveAvatar } from "@/components/interactive-avatar"
 
 const TOOLS = [
@@ -8,11 +10,15 @@ const TOOLS = [
   { label: "Bl", color: "#ea7600", bg: "#1a1a1a", top: "62%", left: "28%", delay: "0.9s" },
 ]
 
-export function Possibilities() {
+export const Possibilities = forwardRef<HTMLElement>(function Possibilities(
+  _props,
+  ref,
+) {
   return (
     <section
       id="possibilities"
-      className="cine-section relative overflow-hidden"
+      ref={ref}
+      className="cine-section relative flex min-h-screen w-full flex-col justify-center overflow-hidden px-6 py-16 sm:px-10 lg:px-16"
     >
       <div className="cine-eyebrow absolute top-24 left-10">
         05 — Contact
@@ -66,6 +72,6 @@ export function Possibilities() {
       </div>
     </section>
   )
-}
+})
 
 export default Possibilities

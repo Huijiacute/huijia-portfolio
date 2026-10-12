@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { forwardRef, useState } from "react"
 
 import FlexCarousel from "@/components/flex-carousel/FlexCarousel"
 import { cn } from "@/lib/utils"
@@ -90,11 +90,18 @@ const CAROUSEL_ITEMS = WORKS.map((w) => ({
   subtitle: w.category,
 }))
 
-export function SelectedWorks() {
+export const SelectedWorks = forwardRef<HTMLElement>(function SelectedWorks(
+  _props,
+  ref,
+) {
   const [activeChip, setActiveChip] = useState(0)
 
   return (
-    <section id="works" className="cine-section relative overflow-hidden">
+    <section
+      id="works"
+      ref={ref}
+      className="cine-section relative overflow-hidden"
+    >
       <div className="cine-eyebrow absolute top-24 left-10">
         04 — Selected Works
       </div>
@@ -148,6 +155,6 @@ export function SelectedWorks() {
       </div>
     </section>
   )
-}
+})
 
 export default SelectedWorks
