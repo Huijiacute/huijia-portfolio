@@ -16,14 +16,15 @@ const SOCIALS = [
 ]
 
 /**
- * Footer — a full-width dark panel with navigation on the left, contact details
- * and social links on the right, and a large blurred "Houykea" wordmark bleeding
- * up from the bottom. The wordmark + glow use the site's purple brand gradient.
+ * Footer — a full-screen dark panel with navigation on the left, contact
+ * details and social links on the right, and a large "Houykea" wordmark
+ * bleeding up from the bottom. The wordmark + glow use the site's purple
+ * brand gradient.
  */
 export function Footer() {
   return (
-    <footer className="w-full px-4 pb-6 sm:px-6 lg:px-10">
-      <div className="relative mx-auto w-full max-w-[1500px] overflow-hidden rounded-[28px] border border-white/10 bg-[#121019] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.75)]">
+    <footer className="relative w-full">
+      <div className="relative flex h-[50vh] min-h-[420px] w-full flex-col overflow-hidden border-t border-white/10 bg-[#121019]">
         {/* Brand glow bleeding up from the bottom (purple theme) */}
         <div
           aria-hidden
@@ -34,14 +35,14 @@ export function Footer() {
           }}
         />
 
-        {/* Giant background wordmark */}
+        {/* Giant background wordmark — clearer, only a light blur */}
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-[-0.12em] z-0 select-none text-center font-semibold leading-none tracking-tight blur-[2px]"
+          className="pointer-events-none absolute inset-x-0 bottom-[-0.08em] z-0 select-none text-center font-semibold leading-none tracking-tight blur-[1px]"
           style={{
-            fontSize: "clamp(5rem, 20vw, 20rem)",
+            fontSize: "clamp(5rem, 22vw, 24rem)",
             background:
-              "linear-gradient(180deg, rgba(159,103,255,0.14) 0%, rgba(124,58,237,0.55) 55%, rgba(216,179,130,0.9) 100%)",
+              "linear-gradient(180deg, rgba(159,103,255,0.28) 0%, rgba(124,58,237,0.8) 55%, rgba(216,179,130,1) 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -52,7 +53,7 @@ export function Footer() {
         </span>
 
         {/* Foreground content */}
-        <div className="relative z-10 flex flex-col gap-24 p-8 sm:p-12 lg:p-14">
+        <div className="relative z-10 flex flex-1 flex-col justify-between gap-24 p-8 sm:p-12 lg:p-16">
           <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
             {/* Left: navigation */}
             <nav className="flex flex-col gap-4">

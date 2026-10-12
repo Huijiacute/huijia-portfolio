@@ -82,11 +82,8 @@ export function App() {
           it spans the entire viewport width. */}
       <Possibilities ref={contactRef} />
 
-      {/* Full-width footer. */}
+      {/* Full-screen footer. */}
       <Footer />
-
-      {/* Breathing room below the footer. */}
-      <div className="h-16 w-full sm:h-24" />
     </div>
   )
 }
