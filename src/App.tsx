@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 import { Biography } from "@/components/biography"
+import { Footer } from "@/components/footer"
 import { Hero } from "@/components/hero"
 import { LiquidBackground } from "@/components/liquid-ether/LiquidBackground"
 import { Portfolio } from "@/components/portfolio"
@@ -80,6 +81,12 @@ export function App() {
       {/* Contact section — rendered full-screen outside the offset container so
           it spans the entire viewport width. */}
       <Possibilities ref={contactRef} />
+
+      {/* Full-width footer. */}
+      <Footer />
+
+      {/* Breathing room below the footer. */}
+      <div className="h-16 w-full sm:h-24" />
     </div>
   )
 }
