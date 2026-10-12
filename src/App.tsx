@@ -66,7 +66,7 @@ export function App() {
         </div>
 
         <div className="flex flex-col gap-54 ml-24 mr-2">
-          <div className="sticky top-0 z-30 py-3 backdrop-blur-sm">
+          <div className="sticky top-0 z-30 px-10 py-3 backdrop-blur-sm">
             <TopNav />
           </div>
           <main>

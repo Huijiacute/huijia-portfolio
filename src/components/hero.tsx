@@ -16,11 +16,21 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="mf-body relative flex min-h-[70vh] flex-col justify-center py-10"
+      className="mf-body relative flex min-h-[70vh] flex-col justify-center px-10 py-10"
     >
-      {/* Interactive TechText wordmark (left-anchored; container sized near the
-          text width so the component's internal centering reads as left-aligned) */}
-      <div style={{ position: "relative", width: "min(100%, 720px)", height: 180, marginLeft: "-56px" }}>
+      {/* Interactive TechText wordmark. TechText centers its text inside the
+          canvas and fits it to ~90% of the width, leaving ~5% empty on each
+          side. We cancel that left padding with a self-relative translateX so
+          the wordmark's visual left edge sits at the section's left baseline
+          (offset 0), matching the heading, buttons and scroll hint below. */}
+      <div
+        style={{
+          position: "relative",
+          width: "min(100%, 720px)",
+          height: 180,
+          transform: "translateX(-5%)",
+        }}
+      >
         <TechText
           text="Lim Houykea"
           fontWeight={600}

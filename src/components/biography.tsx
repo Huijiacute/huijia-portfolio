@@ -48,7 +48,7 @@ function TailwindMark({ className = "" }: { className?: string }) {
 export function Biography() {
   return (
     <section id="biography" className="cine-section relative">
-      <div className="mx-auto w-[105%] max-w-[1470px] -translate-x-[2.5%]">
+      <div className="w-full max-w-[1470px]">
         {/* Content grid (card wrapper removed) */}
         <div className="grid items-center gap-10 md:grid-cols-2">
           {/* Left: eyebrow + WHO AM I + bio + CTA + tech skills */}
