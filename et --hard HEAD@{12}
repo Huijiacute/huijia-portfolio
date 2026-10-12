@@ -1,0 +1,21 @@
+[33m08c437a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33m08c437a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33m08c437a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: checkout: moving from v1-jia to main
+[33m2291ccb[m[33m ([m[1;31morigin/v1-jia[m[33m, [m[1;32mv1-jia[m[33m)[m HEAD@{3}: commit: latest change
+[33m3ab3127[m HEAD@{4}: commit: Perfect hero section new look with profile card
+[33m6f78105[m HEAD@{5}: commit: jia latest
+[33m030f4f9[m HEAD@{6}: commit: navigation bar
+[33me620ef7[m HEAD@{7}: commit: nav bar with jia name
+[33m9cffac8[m HEAD@{8}: reset: moving to HEAD
+[33m9cffac8[m HEAD@{9}: reset: moving to HEAD
+[33m9cffac8[m HEAD@{10}: reset: moving to HEAD
+[33m9cffac8[m HEAD@{11}: checkout: moving from v1-jia to v1-jia
+[33m9cffac8[m HEAD@{12}: checkout: moving from main to v1-jia
+[33m08c437a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{13}: checkout: moving from v1-jia to main
+[33m9cffac8[m HEAD@{14}: commit: jia full screen
+[33m08c437a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{15}: checkout: moving from main to v1-jia
+[33m08c437a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{16}: commit: first profile
+[33mfa79db6[m HEAD@{17}: checkout: moving from 3d-pf to main
+[33m383da00[m[33m ([m[1;31morigin/3d-pf[m[33m, [m[1;32m3d-pf[m[33m)[m HEAD@{18}: commit: cartoon 3D profile hero section
+[33mfa79db6[m HEAD@{19}: checkout: moving from main to 3d-pf
+[33mfa79db6[m HEAD@{20}: commit (initial): initial commit

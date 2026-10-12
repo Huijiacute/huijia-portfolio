@@ -30,6 +30,8 @@ coverage
 node_modules/
 jspm_packages/
 web_modules/
+dev.out
+dev.err
 
 # TypeScript cache
 *.tsbuildinfo
