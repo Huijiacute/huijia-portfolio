@@ -1,5 +1,6 @@
 import { ArrowDown, Download } from "lucide-react"
 
+import cvUrl from "@/assets/HOUYKEA LIM_CV.pdf?url"
 import TechText from "@/components/tech-text/TechText"
 import { useResolvedTheme } from "@/hooks/use-resolved-theme"
 
@@ -79,7 +80,8 @@ export function Hero() {
         </a>
 
         <a
-          href="#"
+          href={cvUrl}
+          download="Houykea Lim - CV.pdf"
           className="inline-flex items-center gap-2 font-medium text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
         >
           Download CV
